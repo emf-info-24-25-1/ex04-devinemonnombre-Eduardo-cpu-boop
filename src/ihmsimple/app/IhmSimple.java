@@ -1,5 +1,9 @@
 package ihmsimple.app;
 
+import ihmsimple.ctrl.Controller;
+import ihmsimple.services.ServiceDevine;
+import ihmsimple.views.View;
+
 public class IhmSimple {
     
     /**
@@ -10,7 +14,15 @@ public class IhmSimple {
      * @param args arguments de la ligne de commande
      */
     public static void main(String[] args) {
-        // VOTRE CODE ICI...
+        Controller refCtrl = new Controller();
+        ServiceDevine refServiceDevine = new ServiceDevine();
+        View refView = new View();
+
+        refCtrl.setRefServiceDevine(refServiceDevine);
+        refCtrl.setRefView(refView);
+        refView.setRefCtrl(refCtrl);
+        refServiceDevine.setRefCtrl(refCtrl);
+        refCtrl.start();
     }
 
 }
